@@ -53,9 +53,9 @@ button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0
 .panel.hp .note{background:#faeeda}
 .close-btn{margin-top:10px;padding:6px 14px;border-radius:7px;border:1px solid #d3d1c7;background:#fff;color:#1a1a18;font-size:11px}
 /* glossary terms */
-.gl{border-bottom:1px dashed #999;cursor:pointer;white-space:nowrap;position:relative}
+.gl{border-bottom:1px dashed #888;cursor:pointer;position:relative;display:inline}
 /* glossary tooltip — inline block below term, iOS-safe */
-.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 4px);z-index:200;background:#1a1a18;color:#f8f7f4;font-size:11px;line-height:1.55;padding:8px 10px;border-radius:8px;width:240px;font-weight:400;box-shadow:0 4px 16px rgba(0,0,0,.25);pointer-events:none}
+.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:200;background:#1a1a18;color:#f8f7f4;font-size:11px;line-height:1.6;padding:10px 12px;border-radius:8px;width:260px;max-width:calc(100vw - 28px);white-space:normal;word-break:break-word;font-weight:400;box-shadow:0 4px 20px rgba(0,0,0,.3);pointer-events:none}
 .gl-tip::before{content:'';position:absolute;top:-5px;left:12px;border:5px solid transparent;border-bottom-color:#1a1a18;border-top:none}
 .gl.tip-open .gl-tip{display:block}
 .footer-note{font-size:11px;color:#73726c;margin-top:10px;line-height:1.7;padding:10px 14px;background:#fff;border:1px solid #e8e6e0;border-radius:8px}
