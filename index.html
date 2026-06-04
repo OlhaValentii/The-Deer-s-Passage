@@ -62,7 +62,7 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
 <div class="wrap">
 
 <div class="doc-title">The Deer's Passage — Swimlane (To-Be)</div>
-<div class="doc-meta">Vzorkovna Group · CBOK 4.0 · Два рівні: L1 Проєктний + L2 Операційний</div>
+<div class="doc-meta">Vzorkovna · CBOK 4.0 · Два рівні: L1 Проєктний + L2 Операційний</div>
 <div class="doc-sub">Натисніть будь-який крок — розгорнеться деталь</div>
 
 <div class="legend">
@@ -206,7 +206,7 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     </div>
     <div class="detail-panel" id="dp-accept">
       <h4>4.3 Приймання та Readiness Score</h4>
-      <p>Фінальне приймання: технічний чек-ліст 100%, тестова VR-сесія (всі 4 стадії + всі ефекти), перевірка санітарних стандартів, готовність документації персоналу.</p>
+      <p>Фінальне приймання: технічний чек-лист 100%, тестова VR-сесія (всі 4 стадії + всі ефекти), перевірка санітарних стандартів, готовність документації персоналу.</p>
       <div class="note">⚡ Hand-off H-03 (КРИТИЧНИЙ): передача L1 → L2<br>📋 Результат: Readiness Score 100% + регламент, чек-листи, матриця ризиків</div>
       <button class="detail-close" onclick="close_panel('dp-accept',this)">Закрити ✕</button>
     </div>
@@ -285,7 +285,7 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Технік об'єкта</div>
       <div class="lane-content">
-        <button class="step tech" onclick="toggle(this,'morning')">7.1 Чек-ліст «Ранок»</button>
+        <button class="step tech" onclick="toggle(this,'morning')">7.1 Чек-лист «Ранок»</button>
         <span class="arrow">→</span>
         <button class="step tech" onclick="toggle(this,'testrun')">7.2 Тестовий запуск</button>
         <button class="handoff med" onclick="toggleH('h06')">H-06 ▾</button>
@@ -298,7 +298,7 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
       <button class="detail-close" onclick="closeH('h06')">Закрити ✕</button>
     </div>
     <div class="detail-panel" id="dp-morning">
-      <h4>7.1 Ранковий чек-ліст (щодня)</h4>
+      <h4>7.1 Ранковий чек-лист (щодня)</h4>
       <p>Перевірка: VR-шолом та навушники, рівні ароматизаторів (ліс, деревина, трави, цитрус), вода в мікроспреях, вібраційна платформа, вентилятори, освітлення, ПЗ системи.</p>
       <div class="note">📋 Правило: хостес НЕ починає реєстрацію без підтвердження від техніка<br>📊 KPI: Readiness Check = 100% щодня</div>
       <button class="detail-close" onclick="close_panel('dp-morning',this)">Закрити ✕</button>
@@ -444,7 +444,7 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
       <div class="lane-content">
         <button class="step tech" onclick="toggle(this,'tech_inc')">11.1 Incident management</button>
         <span class="arrow">→</span>
-        <button class="step tech" onclick="toggle(this,'tech_eod')">11.2 Чек-ліст «Вечір»</button>
+        <button class="step tech" onclick="toggle(this,'tech_eod')">11.2 Чек-лист «Вечір»</button>
         <span class="kpi-badge">KPI</span>
       </div>
     </div>
@@ -455,7 +455,7 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
       <button class="detail-close" onclick="close_panel('dp-tech_inc',this)">Закрити ✕</button>
     </div>
     <div class="detail-panel" id="dp-tech_eod">
-      <h4>11.2 Вечірній чек-ліст</h4>
+      <h4>11.2 Вечірній чек-лист</h4>
       <p>Перевірка залишків витратних матеріалів, стан обладнання, заповнення денного технічного звіту, планування на наступний день. Система в нічний standby.</p>
       <div class="note">📊 KPI: Failure Rate — перервані сесії / загальна кількість (ціль: 0)<br>📋 Результат: звіт + готовність до наступного дня</div>
       <button class="detail-close" onclick="close_panel('dp-tech_eod',this)">Закрити ✕</button>
