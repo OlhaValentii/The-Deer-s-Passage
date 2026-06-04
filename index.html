@@ -8,7 +8,7 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:#f8f7f4;color:#1a1a18;padding:20px 14px}
 .wrap{max-width:960px;margin:0 auto}
-.doc-title{font-size:17px;font-weight:600;color:#1a1a18;margin-bottom:3px}
+.doc-title{font-size:17px;font-weight:600;margin-bottom:3px}
 .doc-meta{font-size:11px;color:#73726c;margin-bottom:4px}
 .doc-sub{font-size:11px;color:#73726c;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid #e0deda}
 .legend{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
@@ -16,46 +16,49 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;ba
 .leg-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .phase-label{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#73726c;margin:14px 0 5px}
 .swimlane-wrap{border:1px solid #d3d1c7;border-radius:12px;overflow:hidden;margin-bottom:10px;background:#fff}
-.lane{display:flex;align-items:stretch;border-bottom:1px solid #e8e6e0;flex-direction:column}
+.lane{display:flex;flex-direction:column;border-bottom:1px solid #e8e6e0}
 .lane:last-child{border-bottom:none}
 .lane-row{display:flex;align-items:stretch}
 .lane-label{min-width:108px;max-width:108px;padding:10px 8px;font-size:10px;font-weight:600;display:flex;align-items:center;border-right:1px solid #e8e6e0;color:#5f5e5a;line-height:1.35;background:#f4f3ef;flex-shrink:0}
 .lane-content{flex:1;display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:8px 10px;min-height:54px}
-.step{border-radius:8px;padding:6px 10px;font-size:11px;font-weight:500;line-height:1.35;cursor:pointer;border:1px solid transparent;transition:opacity .15s;font-family:inherit;text-align:left;-webkit-tap-highlight-color:rgba(0,0,0,.08);touch-action:manipulation}
+/* unified interactive button base */
+button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,.08);touch-action:manipulation;border:none;background:none}
+.step{border-radius:8px;padding:6px 10px;font-size:11px;font-weight:500;line-height:1.35;text-align:left;border:1px solid transparent;transition:box-shadow .15s,opacity .15s}
 .step:active{opacity:.65}
 .step.vzorkovna{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC}
-.step.jager{background:#FAEEDA;color:#633806;border-color:#FAC775}
-.step.design{background:#E1F5EE;color:#085041;border-color:#5DCAA5}
-.step.tech{background:#FAECE7;color:#712B13;border-color:#F0997B}
-.step.legal{background:#FBEAF0;color:#72243E;border-color:#ED93B1}
-.step.client{background:#EAF3DE;color:#27500A;border-color:#97C459}
-.step.system{background:#E6F1FB;color:#0C447C;border-color:#85B7EB}
-.step.ops{background:#F1EFE8;color:#444441;border-color:#B4B2A9}
-.step.active{box-shadow:0 0 0 2px #534AB7;opacity:1}
-.handoff{display:inline-flex;align-items:center;font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;margin:0 1px;white-space:nowrap;flex-shrink:0}
-.handoff.high{background:#FCEBEB;color:#A32D2D;border:1px solid #F09595}
-.handoff.med{background:#FAEEDA;color:#633806;border:1px solid #FAC775}
+.step.jager    {background:#FAEEDA;color:#633806;border-color:#FAC775}
+.step.design   {background:#E1F5EE;color:#085041;border-color:#5DCAA5}
+.step.tech     {background:#FAECE7;color:#712B13;border-color:#F0997B}
+.step.legal    {background:#FBEAF0;color:#72243E;border-color:#ED93B1}
+.step.client   {background:#EAF3DE;color:#27500A;border-color:#97C459}
+.step.system   {background:#E6F1FB;color:#0C447C;border-color:#85B7EB}
+.step.ops      {background:#F1EFE8;color:#444441;border-color:#B4B2A9}
+.step.on       {box-shadow:0 0 0 2px #534AB7}
+.handoff{display:inline-flex;align-items:center;font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;border:1px solid transparent;transition:box-shadow .15s}
+.handoff.high  {background:#FCEBEB;color:#A32D2D;border-color:#F09595}
+.handoff.med   {background:#FAEEDA;color:#633806;border-color:#FAC775}
+.handoff.on    {box-shadow:0 0 0 2px #A32D2D}
 .arrow{color:#888780;font-size:13px;flex-shrink:0}
 .kpi-badge{display:inline-flex;align-items:center;font-size:10px;padding:2px 7px;border-radius:4px;background:#EAF3DE;color:#27500A;border:1px solid #97C459}
 .section-divider{font-size:11px;font-weight:600;padding:6px 14px;background:#f4f3ef;color:#73726c;border-bottom:1px solid #e8e6e0;letter-spacing:.03em}
-
-/* Detail panel — expands inline, no fixed positioning */
-.detail-panel{display:none;width:100%;border-top:1px solid #e8e6e0;background:#fafaf8;padding:12px 14px}
-.detail-panel.open{display:block}
-.detail-panel h4{font-size:12px;font-weight:600;color:#1a1a18;margin-bottom:7px}
-.detail-panel p{font-size:11px;color:#3d3d3a;line-height:1.65;margin-bottom:5px}
-.detail-panel .note{font-size:11px;color:#5f5e5a;line-height:1.55;padding:5px 8px;background:#f0efe9;border-radius:6px;margin-top:5px}
-.detail-close{margin-top:10px;padding:6px 14px;border-radius:7px;border:1px solid #d3d1c7;background:#fff;color:#1a1a18;font-size:11px;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:rgba(0,0,0,.08)}
-
+/* expandable panels */
+.panel{display:none;border-top:1px solid #e8e6e0;padding:12px 14px}
+.panel.dp{background:#fafaf8}
+.panel.hp{background:#fff8f0}
+.panel.open{display:block}
+.panel h4{font-size:12px;font-weight:600;margin-bottom:7px}
+.panel p{font-size:11px;color:#3d3d3a;line-height:1.65;margin-bottom:5px}
+.panel .note{font-size:11px;color:#5f5e5a;line-height:1.55;padding:5px 8px;border-radius:6px;margin-top:5px}
+.panel.dp .note{background:#f0efe9}
+.panel.hp .note{background:#faeeda}
+.close-btn{margin-top:10px;padding:6px 14px;border-radius:7px;border:1px solid #d3d1c7;background:#fff;color:#1a1a18;font-size:11px}
+/* glossary terms */
+.gl{border-bottom:1px dashed #999;cursor:pointer;white-space:nowrap;position:relative}
+/* glossary tooltip — inline block below term, iOS-safe */
+.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 4px);z-index:200;background:#1a1a18;color:#f8f7f4;font-size:11px;line-height:1.55;padding:8px 10px;border-radius:8px;width:240px;font-weight:400;box-shadow:0 4px 16px rgba(0,0,0,.25);pointer-events:none}
+.gl-tip::before{content:'';position:absolute;top:-5px;left:12px;border:5px solid transparent;border-bottom-color:#1a1a18;border-top:none}
+.gl.tip-open .gl-tip{display:block}
 .footer-note{font-size:11px;color:#73726c;margin-top:10px;line-height:1.7;padding:10px 14px;background:#fff;border:1px solid #e8e6e0;border-radius:8px}
-
-.h-panel{display:none;width:100%;border-top:1px solid #e8e6e0;background:#fff8f0;padding:12px 14px}
-.h-panel.open{display:block}
-.h-panel h4{font-size:12px;font-weight:600;color:#1a1a18;margin-bottom:7px}
-.h-panel p{font-size:11px;color:#3d3d3a;line-height:1.65;margin-bottom:5px}
-.h-panel .note{font-size:11px;color:#5f5e5a;line-height:1.55;padding:5px 8px;background:#faeeda;border-radius:6px;margin-top:5px}
-button.handoff{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0,.08);touch-action:manipulation}
-button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
 </style>
 </head>
 <body>
@@ -63,19 +66,20 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
 
 <div class="doc-title">The Deer's Passage — Swimlane (To-Be)</div>
 <div class="doc-meta">Vzorkovna · CBOK 4.0 · Два рівні: L1 Проєктний + L2 Операційний</div>
-<div class="doc-sub">Натисніть будь-який крок — розгорнеться деталь</div>
+<div class="doc-sub">Натисніть будь-який крок або <span class="gl" onclick="gt(this)">Hand-off<span class="gl-tip">Hand-off (Передача в роботу) — момент у процесі, коли один фахівець або відділ завершує свою частину роботи і офіційно передає завдання наступному виконавцю.</span></span> — розгорнеться деталь. Підкреслені терміни — глосарій.</div>
 
 <div class="legend">
   <div class="leg-item"><div class="leg-dot" style="background:#534AB7"></div>Vzorkovna</div>
   <div class="leg-item"><div class="leg-dot" style="background:#BA7517"></div>Jägermeister</div>
   <div class="leg-item"><div class="leg-dot" style="background:#1D9E75"></div>Дизайн/підрядники</div>
   <div class="leg-item"><div class="leg-dot" style="background:#D85A30"></div>Технік</div>
-  <div class="leg-item"><div class="leg-dot" style="background:#D4537E"></div>Юридичний/IP</div>
+  <div class="leg-item"><div class="leg-dot" style="background:#D4537E"></div>Юридичний/<span class="gl" onclick="gt(this)">IP<span class="gl-tip">IP — Інтелектуальна власність (Intellectual Property): виключні права на результати творчої діяльності — VR-контент, сценарій, музику, 3D-моделі, торгові марки.</span></span></div>
   <div class="leg-item"><div class="leg-dot" style="background:#639922"></div>Гість</div>
   <div class="leg-item"><div class="leg-dot" style="background:#378ADD"></div>Система/ПЗ</div>
   <div class="leg-item"><div class="leg-dot" style="background:#888780"></div>Хостес</div>
 </div>
 
+<!-- ═══════════════════════════════ L1 ═══════════════════════════════ -->
 <div class="phase-label">L1 — Проєктний процес: «Створення та запуск The Deer's Passage»</div>
 <div class="swimlane-wrap">
 
@@ -85,37 +89,37 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Vzorkovna<br>Команда впровадження</div>
       <div class="lane-content">
-        <button class="step vzorkovna" onclick="toggle(this,'init')">1.1 Формування концепту</button>
+        <button class="step vzorkovna" onclick="openPanel(this,'dp-init')">1.1 Формування концепту</button>
         <span class="arrow">→</span>
-        <button class="step vzorkovna" onclick="toggle(this,'brief')">1.2 Спонсорський бриф</button>
+        <button class="step vzorkovna" onclick="openPanel(this,'dp-brief')">1.2 Спонсорський бриф</button>
         <span class="arrow">→</span>
-        <button class="step vzorkovna" onclick="toggle(this,'pitch')">1.3 Пітч Jägermeister</button>
-        <button class="handoff high" onclick="toggleH('h01')">⚡ H-01 ▾</button>
+        <button class="step vzorkovna" onclick="openPanel(this,'dp-pitch')">1.3 Пітч Jägermeister</button>
+        <button class="handoff high" onclick="openPanel(this,'hp-h01')">⚡ H-01 ▾</button>
       </div>
     </div>
-    <div class="h-panel" id="hp-h01">
+    <div class="panel hp" id="hp-h01">
       <h4>H-01 — Пітч спонсору (КРИТИЧНИЙ)</h4>
       <p>Vzorkovna передає спонсорський пакет бренд-менеджменту Jägermeister. Перша зовнішня точка передачі: від ініціатора проєкту до потенційного фінансового партнера.</p>
-      <div class="note">⚠️ Ризик: відмова Jägermeister → активація Plan B (альтернативний спонсор або власне фінансування)<br>📋 Що передається: концепт-документ, пітч-дек, бюджет, умови IP-розмежування</div>
-      <button class="detail-close" onclick="closeH('h01')">Закрити ✕</button>
+      <div class="note">⚠️ Ризик: відмова Jägermeister → активація Plan B (альтернативний спонсор або власне фінансування)<br>📋 Що передається: концепт-документ, <span class="gl" onclick="gt(this)">пітч-дек<span class="gl-tip">Пітч-дек (Pitch Deck) — коротка презентація проєкту, продукту або бізнес-ідеї для потенційних інвесторів, партнерів чи клієнтів.</span></span>, бюджет, умови <span class="gl" onclick="gt(this)">IP<span class="gl-tip">IP — Інтелектуальна власність (Intellectual Property): виключні права на результати творчої діяльності.</span></span>-розмежування</div>
+      <button class="close-btn" onclick="closePanel('hp-h01')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-init">
+    <div class="panel dp" id="dp-init">
       <h4>1.1 Формування концепту</h4>
-      <p>Vzorkovna ініціює проєкт The Deer's Passage. Команда впровадження розробляє концепцію: мультисенсорна VR-ніша 1.5×1.5м, 4 стадії сценарію, фізичні ефекти (вібрація, аромат, вітер, туман). Призначається Process Owner.</p>
-      <div class="note">📌 Тригер: рішення власників Групи компаній<br>📋 Результат: затверджений концепт-документ (Статут процесу L1)</div>
-      <button class="detail-close" onclick="close_panel('dp-init',this)">Закрити ✕</button>
+      <p>Vzorkovna ініціює проєкт The Deer's Passage. Команда впровадження розробляє концепцію: мультисенсорна VR-ніша 1.5×1.5м, 4 стадії сценарію, фізичні ефекти (вібрація, аромат, вітер, туман). Призначається <span class="gl" onclick="gt(this)">Process Owner<span class="gl-tip">Process Owner (Власник процесу) — людина, яка повністю відповідає за те, як працює певний робочий процес від початку і до самого кінця.</span></span>.</p>
+      <div class="note">📌 <span class="gl" onclick="gt(this)">Тригер<span class="gl-tip">Тригер — подія або дія, яка запускає початок усього робочого процесу на схемі.</span></span>: рішення власників Групи компаній<br>📋 Результат: затверджений концепт-документ (Статут процесу L1)</div>
+      <button class="close-btn" onclick="closePanel('dp-init')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-brief">
+    <div class="panel dp" id="dp-brief">
       <h4>1.2 Спонсорський бриф</h4>
-      <p>Підготовка повного пакету для залучення спонсора: бізнес-кейс (ROI для Jägermeister), аудиторні інсайти, прогноз UGC-охоплення, концепт-дизайн ніші у фірмовій стилістиці, умови партнерства та IP-розмежування.</p>
-      <div class="note">📊 Аргумент: 98% учасників створюють контент у соцмережах; experiential-кампанії дають 3:1–5:1 ROI<br>📋 Результат: спонсорський пакет + пітч-дек</div>
-      <button class="detail-close" onclick="close_panel('dp-brief',this)">Закрити ✕</button>
+      <p>Підготовка повного пакету для залучення спонсора: бізнес-кейс (<span class="gl" onclick="gt(this)">ROI<span class="gl-tip">ROI (Return on Investment / Окупність інвестицій) — показник, який демонструє, наскільки вигідним є проєкт або фінансова інвестиція.</span></span> для Jägermeister), <span class="gl" onclick="gt(this)">аудиторні інсайти<span class="gl-tip">Аудиторні інсайти (Audience Insights) — факти та відкриття про клієнтів, які допомагають зрозуміти, чому вони купують або не купують ваш продукт.</span></span>, прогноз <span class="gl" onclick="gt(this)">UGC-охоплення<span class="gl-tip">UGC-охоплення (User Generated Content Reach) — кількість людей, які побачили контент про ваш бренд, створений самими користувачами чи клієнтами.</span></span>, концепт-дизайн ніші у фірмовій стилістиці, умови партнерства та <span class="gl" onclick="gt(this)">IP<span class="gl-tip">IP — Інтелектуальна власність (Intellectual Property): виключні права на результати творчої діяльності.</span></span>-розмежування.</p>
+      <div class="note">📊 Аргумент: 98% учасників створюють контент у соцмережах; <span class="gl" onclick="gt(this)">experiential-кампанії<span class="gl-tip">Experiential-кампанії (Емпіричний маркетинг) — заходи або реклама, яка взаємодіє з клієнтом через його власні відчуття, емоції та живий досвід.</span></span> дають 3:1–5:1 ROI<br>📋 Результат: спонсорський пакет + <span class="gl" onclick="gt(this)">пітч-дек<span class="gl-tip">Пітч-дек (Pitch Deck) — коротка презентація проєкту або бізнес-ідеї для потенційних інвесторів, партнерів чи клієнтів.</span></span></div>
+      <button class="close-btn" onclick="closePanel('dp-brief')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-pitch">
+    <div class="panel dp" id="dp-pitch">
       <h4>1.3 Пітч Jägermeister</h4>
-      <p>Формальна презентація пропозиції бренд-менеджменту Jägermeister International. Переговори щодо обсягу фінансування, бренд-гайдлайнів, звітності, виключних прав, строків.</p>
-      <div class="note">⚡ Hand-off H-01 (КРИТИЧНИЙ): перша зовнішня передача від Vzorkovna до спонсора<br>⚠️ Ризик: відмова → Plan B (альтернативний спонсор / власне фінансування)</div>
-      <button class="detail-close" onclick="close_panel('dp-pitch',this)">Закрити ✕</button>
+      <p>Формальна презентація пропозиції бренд-менеджменту Jägermeister International. Переговори щодо обсягу фінансування, бренд-<span class="gl" onclick="gt(this)">гайдлайнів<span class="gl-tip">Гайдлайн (Guideline) — збірник правил та інструкцій, який показує, як правильно використовувати фірмовий стиль бренду або елементи дизайну.</span></span>, звітності, виключних прав, строків.</p>
+      <div class="note">⚡ <span class="gl" onclick="gt(this)">Hand-off<span class="gl-tip">Hand-off (Передача в роботу) — момент у процесі, коли один фахівець або відділ завершує свою частину роботи і офіційно передає завдання наступному виконавцю.</span></span> H-01 (КРИТИЧНИЙ): перша зовнішня передача від Vzorkovna до спонсора<br>⚠️ Ризик: відмова → Plan B (альтернативний спонсор / власне фінансування)</div>
+      <button class="close-btn" onclick="closePanel('dp-pitch')">Закрити ✕</button>
     </div>
   </div>
 
@@ -123,52 +127,52 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Jägermeister<br>Бренд-менеджмент</div>
       <div class="lane-content">
-        <button class="step jager" onclick="toggle(this,'jdecision')">2.1 Оцінка пропозиції</button>
+        <button class="step jager" onclick="openPanel(this,'dp-jdecision')">2.1 Оцінка пропозиції</button>
         <span class="arrow">→</span>
-        <button class="step jager" onclick="toggle(this,'jfeedback')">2.2 Надання гайдлайнів</button>
-        <button class="handoff high" onclick="toggleH('h02')">⚡ H-02 ▾</button>
+        <button class="step jager" onclick="openPanel(this,'dp-jfeedback')">2.2 Надання гайдлайнів</button>
+        <button class="handoff high" onclick="openPanel(this,'hp-h02')">⚡ H-02 ▾</button>
       </div>
     </div>
-    <div class="h-panel" id="hp-h02">
+    <div class="panel hp" id="hp-h02">
       <h4>H-02 — Фінансування + гайдлайни (КРИТИЧНИЙ)</h4>
-      <p>Jägermeister підтверджує участь та передає Vzorkovna: обсяг і умови фінансування, бренд-бук, гайдлайни використання торгової марки, вимоги до звітності.</p>
-      <div class="note">⚠️ Ризик: жорсткі бренд-обмеження можуть конфліктувати з авторським концептом → узгодження ДО підписання<br>📌 IP-момент: фіксується хто чим володіє — до підписання угоди, не після</div>
-      <button class="detail-close" onclick="closeH('h02')">Закрити ✕</button>
+      <p>Jägermeister підтверджує участь та передає Vzorkovna: обсяг і умови фінансування, бренд-бук, <span class="gl" onclick="gt(this)">гайдлайни<span class="gl-tip">Гайдлайн (Guideline) — збірник правил та інструкцій, який показує, як правильно використовувати фірмовий стиль бренду або елементи дизайну.</span></span> використання торгової марки, вимоги до звітності.</p>
+      <div class="note">⚠️ Ризик: жорсткі бренд-обмеження можуть конфліктувати з авторським концептом → узгодження ДО підписання<br>📌 <span class="gl" onclick="gt(this)">IP<span class="gl-tip">IP — Інтелектуальна власність (Intellectual Property): виключні права на результати творчої діяльності.</span></span>-момент: фіксується хто чим володіє — до підписання угоди, не після</div>
+      <button class="close-btn" onclick="closePanel('hp-h02')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-jdecision">
+    <div class="panel dp" id="dp-jdecision">
       <h4>2.1 Оцінка пропозиції Jägermeister</h4>
       <p>Бренд-менеджмент проводить внутрішню оцінку: відповідність бренд-стратегії, цільова аудиторія, маркетингова цінність, юридична перевірка, фінансове затвердження.</p>
       <div class="note">⏱ Рекомендований строк: 30 днів (фіксується в угоді)<br>🎯 Рішення: Так / Ні / Умовно</div>
-      <button class="detail-close" onclick="close_panel('dp-jdecision',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-jdecision')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-jfeedback">
+    <div class="panel dp" id="dp-jfeedback">
       <h4>2.2 Надання гайдлайнів та умов</h4>
-      <p>Jägermeister передає: бренд-бук та гайдлайни використання торгової марки, вимоги до логотипу, обсяг фінансування, вимоги до звітності (кількість сесій, UGC, NPS).</p>
+      <p>Jägermeister передає: бренд-бук та <span class="gl" onclick="gt(this)">гайдлайни<span class="gl-tip">Гайдлайн (Guideline) — збірник правил та інструкцій, який показує, як правильно використовувати фірмовий стиль бренду або елементи дизайну.</span></span> використання торгової марки, вимоги до логотипу, обсяг фінансування, вимоги до звітності (кількість сесій, UGC, <span class="gl" onclick="gt(this)">NPS<span class="gl-tip">NPS (Net Promoter Score) — індекс, який показує рівень відданості та готовності клієнтів рекомендувати вашу компанію іншим.</span></span>).</p>
       <div class="note">⚡ Hand-off H-02 (КРИТИЧНИЙ): фінансування + гайдлайни<br>📌 IP-момент: розмежування прав фіксується ДО підписання угоди</div>
-      <button class="detail-close" onclick="close_panel('dp-jfeedback',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-jfeedback')">Закрити ✕</button>
     </div>
   </div>
 
   <div class="lane">
     <div class="lane-row">
-      <div class="lane-label">Юридичний відділ / IP</div>
+      <div class="lane-label">Юридичний відділ / <span class="gl" onclick="gt(this)">IP<span class="gl-tip">IP — Інтелектуальна власність (Intellectual Property): виключні права на результати творчої діяльності.</span></span></div>
       <div class="lane-content">
-        <button class="step legal" onclick="toggle(this,'contract')">3.1 IP-угода та реєстрація прав</button>
+        <button class="step legal" onclick="openPanel(this,'dp-contract')">3.1 IP-угода та реєстрація прав</button>
         <span class="arrow">→</span>
-        <button class="step legal" onclick="toggle(this,'ipcheck')">3.2 Ongoing IP-compliance</button>
+        <button class="step legal" onclick="openPanel(this,'dp-ipcheck')">3.2 Ongoing IP-compliance</button>
       </div>
     </div>
-    <div class="detail-panel" id="dp-contract">
+    <div class="panel dp" id="dp-contract">
       <h4>3.1 IP-угода та реєстрація прав</h4>
-      <p>Розробка спонсорської угоди з чітким IP-розмежуванням: Vzorkovna — власник VR-контенту, сценарію, конструкції ніші. Jägermeister надає ліцензію на використання торгової марки в межах проєкту.</p>
-      <div class="note">⚖️ ЗУ №2811-IX (2022): VR-контент, музика, 3D — об'єкти авторського права<br>⚠️ Ключовий ризик: якщо угода мовчить про IP — суперечка неминуча</div>
-      <button class="detail-close" onclick="close_panel('dp-contract',this)">Закрити ✕</button>
+      <p>Розробка спонсорської угоди з чітким <span class="gl" onclick="gt(this)">IP<span class="gl-tip">IP — Інтелектуальна власність (Intellectual Property): виключні права на результати творчої діяльності.</span></span>-розмежуванням: Vzorkovna — власник VR-контенту, сценарію, конструкції ніші. Jägermeister надає ліцензію на використання торгової марки в межах проєкту.</p>
+      <div class="note">⚖️ Україна: ЗУ №2811-IX (2022) — VR-контент, музика, 3D є об'єктами авторського права<br>⚖️ Чехія: Zákon č. 121/2000 Sb. (Autorský zákon) — аналогічно захищає цифровий контент, 3D-моделі та аудіовізуальні твори<br>⚠️ Ключовий ризик: якщо угода мовчить про IP — суперечка неминуча</div>
+      <button class="close-btn" onclick="closePanel('dp-contract')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-ipcheck">
-      <h4>3.2 Ongoing IP-compliance</h4>
-      <p>Протягом розробки: перевірка всіх активів (музика, 3D, шрифти). Контроль відповідності використання бренду Jägermeister гайдлайнам. Управління правами на AI-згенерований контент.</p>
-      <div class="note">🤖 AI-контент: лише людська частина = авторське право (ЗУ №2811-IX + практика НОІВ)<br>📋 Результат: IP-реєстр проєкту</div>
-      <button class="detail-close" onclick="close_panel('dp-ipcheck',this)">Закрити ✕</button>
+    <div class="panel dp" id="dp-ipcheck">
+      <h4>3.2 <span class="gl" onclick="gt(this)">Ongoing IP-compliance<span class="gl-tip">Ongoing IP-compliance (Постійний контроль інтелектуальної власності) — регулярна перевірка проєкту на дотримання авторських прав та законність використання чужих напрацювань.</span></span></h4>
+      <p>Протягом розробки: перевірка всіх активів (музика, 3D, шрифти). Контроль відповідності використання бренду Jägermeister <span class="gl" onclick="gt(this)">гайдлайнам<span class="gl-tip">Гайдлайн (Guideline) — збірник правил та інструкцій, який показує, як правильно використовувати фірмовий стиль бренду або елементи дизайну.</span></span>. Управління правами на AI-згенерований контент.</p>
+      <div class="note">🤖 AI-контент: лише людська частина = авторське право (ЗУ №2811-IX + <span class="gl" onclick="gt(this)">практика НОІВ<span class="gl-tip">Практика НОІВ — офіційні правила та процедури Національного органу інтелектуальної власності України (nipo.gov.ua) для реєстрації та захисту авторських прав, торговельних марок і патентів.</span></span>; Чехія: Úřad průmyslového vlastnictví — аналогічна позиція щодо AI-творів)<br>📋 Результат: IP-реєстр проєкту</div>
+      <button class="close-btn" onclick="closePanel('dp-ipcheck')">Закрити ✕</button>
     </div>
   </div>
 
@@ -178,37 +182,37 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Vzorkovna<br>Команда впровадження</div>
       <div class="lane-content">
-        <button class="step vzorkovna" onclick="toggle(this,'tz')">4.1 Технічне завдання</button>
+        <button class="step vzorkovna" onclick="openPanel(this,'dp-tz')">4.1 Технічне завдання</button>
         <span class="arrow">→</span>
-        <button class="step vzorkovna" onclick="toggle(this,'control')">4.2 Контроль виробництва</button>
+        <button class="step vzorkovna" onclick="openPanel(this,'dp-control')">4.2 Контроль виробництва</button>
         <span class="arrow">→</span>
-        <button class="step vzorkovna" onclick="toggle(this,'accept')">4.3 Приймання та Readiness</button>
-        <button class="handoff high" onclick="toggleH('h03')">⚡ H-03 ▾</button>
+        <button class="step vzorkovna" onclick="openPanel(this,'dp-accept')">4.3 Приймання та Readiness</button>
+        <button class="handoff high" onclick="openPanel(this,'hp-h03')">⚡ H-03 ▾</button>
       </div>
     </div>
-    <div class="h-panel" id="hp-h03">
+    <div class="panel hp" id="hp-h03">
       <h4>H-03 — Передача L1 → L2 (КРИТИЧНИЙ)</h4>
       <p>Команда впровадження Vzorkovna передає завершений проєкт операційному директору локації. Проєктний процес (L1) завершується, стартує операційний (L2).</p>
-      <div class="note">⚠️ Ризик: неповна передача знань → операційний хаос на старті. Потрібен Readiness Score 100%<br>📋 Що передається: регламент L2, чек-листи, матриця ризиків, IP-реєстр, контакти підрядників</div>
-      <button class="detail-close" onclick="closeH('h03')">Закрити ✕</button>
+      <div class="note">⚠️ Ризик: неповна передача знань → операційний хаос на старті. Потрібен <span class="gl" onclick="gt(this)">Readiness Score<span class="gl-tip">Readiness Score (Оцінка готовності) — числовий або відсотковий показник, який демонструє, наскільки команда, проєкт чи процес готові до запуску або переходу на наступний етап.</span></span> 100%<br>📋 Що передається: регламент L2, чек-листи, матриця ризиків, IP-реєстр, контакти підрядників</div>
+      <button class="close-btn" onclick="closePanel('hp-h03')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-tz">
+    <div class="panel dp" id="dp-tz">
       <h4>4.1 Технічне завдання</h4>
       <p>ТЗ для підрядників: конструкція ніші 1500×1500мм, вібраційна платформа, ароматичні дифузори (4 аромати), мікроспреї туману, спрямовані вентилятори, бурштинове освітлення.</p>
       <div class="note">📐 Сенсорна карта: прив'язка фізичних ефектів до 4 стадій VR-сценарію<br>📋 Milestone: затверджене ТЗ = старт тендеру підрядників</div>
-      <button class="detail-close" onclick="close_panel('dp-tz',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-tz')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-control">
+    <div class="panel dp" id="dp-control">
       <h4>4.2 Контроль виробництва</h4>
-      <p>Process Owner відповідає за проміжний контроль результатів підрядників, узгодження з бренд-гайдлайнами Jägermeister, управління змінами та ризиками.</p>
-      <div class="note">📊 KPI L1: відхилення бюджету ≤5%, відхилення строків ≤7 днів<br>🔄 CBOK: зміни фіксуються в Change Log</div>
-      <button class="detail-close" onclick="close_panel('dp-control',this)">Закрити ✕</button>
+      <p><span class="gl" onclick="gt(this)">Process Owner<span class="gl-tip">Process Owner (Власник процесу) — людина, яка повністю відповідає за те, як працює певний робочий процес від початку і до самого кінця.</span></span> відповідає за проміжний контроль результатів підрядників, узгодження з бренд-гайдлайнами Jägermeister, управління змінами та ризиками.</p>
+      <div class="note">📊 KPI L1: відхилення бюджету ≤5%, відхилення строків ≤7 днів<br>🔄 CBOK: зміни фіксуються в <span class="gl" onclick="gt(this)">Change Log<span class="gl-tip">Change Log (Журнал змін) — перелік або документ, де послідовно записуються всі оновлення та виправлення, внесені у проєкт, документ чи програму.</span></span></div>
+      <button class="close-btn" onclick="closePanel('dp-control')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-accept">
+    <div class="panel dp" id="dp-accept">
       <h4>4.3 Приймання та Readiness Score</h4>
-      <p>Фінальне приймання: технічний чек-лист 100%, тестова VR-сесія (всі 4 стадії + всі ефекти), перевірка санітарних стандартів, готовність документації персоналу.</p>
-      <div class="note">⚡ Hand-off H-03 (КРИТИЧНИЙ): передача L1 → L2<br>📋 Результат: Readiness Score 100% + регламент, чек-листи, матриця ризиків</div>
-      <button class="detail-close" onclick="close_panel('dp-accept',this)">Закрити ✕</button>
+      <p>Фінальне приймання: технічний чек-ліст 100%, тестова VR-сесія (всі 4 стадії + всі ефекти), перевірка санітарних стандартів, готовність документації персоналу.</p>
+      <div class="note">⚡ Hand-off H-03 (КРИТИЧНИЙ): передача L1 → L2<br>📋 Результат: <span class="gl" onclick="gt(this)">Readiness Score<span class="gl-tip">Readiness Score (Оцінка готовності) — числовий або відсотковий показник, який демонструє, наскільки команда, проєкт чи процес готові до запуску або переходу на наступний етап.</span></span> 100% + регламент, чек-листи, матриця ризиків</div>
+      <button class="close-btn" onclick="closePanel('dp-accept')">Закрити ✕</button>
     </div>
   </div>
 
@@ -216,29 +220,29 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Дизайн-студія / Підрядники</div>
       <div class="lane-content">
-        <button class="step design" onclick="toggle(this,'vrdev')">5.1 VR-контент та сценарій</button>
+        <button class="step design" onclick="openPanel(this,'dp-vrdev')">5.1 VR-контент та сценарій</button>
         <span class="arrow">→</span>
-        <button class="step design" onclick="toggle(this,'construct')">5.2 Виготовлення та монтаж</button>
-        <button class="handoff med" onclick="toggleH('h04')">H-04 ▾</button>
+        <button class="step design" onclick="openPanel(this,'dp-construct')">5.2 Виготовлення та монтаж</button>
+        <button class="handoff med" onclick="openPanel(this,'hp-h04')">H-04 ▾</button>
       </div>
     </div>
-    <div class="h-panel" id="hp-h04">
+    <div class="panel hp" id="hp-h04">
       <h4>H-04 — Підрядник → Технік об'єкта</h4>
       <p>Дизайн-студія/підрядники передають змонтовану та протестовану нішу технічному спеціалісту об'єкта Vzorkovna.</p>
       <div class="note">📋 Що передається: фізична конструкція, технічна документація, інструкції з обслуговування<br>✅ Умова прийняття: підписаний акт приймання + тестовий запуск усіх систем</div>
-      <button class="detail-close" onclick="closeH('h04')">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('hp-h04')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-vrdev">
+    <div class="panel dp" id="dp-vrdev">
       <h4>5.1 VR-контент та сценарій</h4>
       <p>3D-середовища для 4 стадій, аудіо-ландшафт, тригери сенсорних ефектів, інтеграція з фізичними системами ніші. Сценарій: міф оленя Jägermeister + трансформаційна подорож.</p>
-      <div class="note">🎨 IP: всі активи — оригінальні або ліцензовані (ЗУ №2811-IX)<br>⚙️ API-інтеграція VR-двигуна з контролером фізичних ефектів</div>
-      <button class="detail-close" onclick="close_panel('dp-vrdev',this)">Закрити ✕</button>
+      <div class="note">🎨 <span class="gl" onclick="gt(this)">IP<span class="gl-tip">IP — Інтелектуальна власність (Intellectual Property): виключні права на результати творчої діяльності.</span></span>: всі активи — оригінальні або ліцензовані (ЗУ №2811-IX; Чехія: Zákon č. 121/2000 Sb.)<br>⚙️ <span class="gl" onclick="gt(this)">API-інтеграція<span class="gl-tip">API-інтеграція (API Integration) — процес об'єднання різних програм або систем, який дозволяє їм автоматично обмінюватися даними між собою.</span></span> VR-двигуна з контролером фізичних ефектів</div>
+      <button class="close-btn" onclick="closePanel('dp-vrdev')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-construct">
+    <div class="panel dp" id="dp-construct">
       <h4>5.2 Виготовлення та монтаж</h4>
       <p>Виготовлення та монтаж фізичної конструкції: каркас, обшивка у бурштиново-помаранчевій стилістиці, вбудовані технічні системи, кабельна інфраструктура, тестовий запуск.</p>
       <div class="note">🔧 Hand-off H-04: підрядник → технік об'єкта (передача змонтованої ніші)<br>📋 Результат: змонтована ніша + технічна документація</div>
-      <button class="detail-close" onclick="close_panel('dp-construct',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-construct')">Закрити ✕</button>
     </div>
   </div>
 
@@ -248,34 +252,35 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Vzorkovna<br>Команда впровадження</div>
       <div class="lane-content">
-        <button class="step vzorkovna" onclick="toggle(this,'training')">6.1 Навчання персоналу</button>
+        <button class="step vzorkovna" onclick="openPanel(this,'dp-training')">6.1 Навчання персоналу</button>
         <span class="arrow">→</span>
-        <button class="step vzorkovna" onclick="toggle(this,'handover')">6.2 Передача L2-власнику</button>
-        <button class="handoff high" onclick="toggleH('h05')">⚡ H-05 ▾</button>
+        <button class="step vzorkovna" onclick="openPanel(this,'dp-handover')">6.2 Передача L2-власнику</button>
+        <button class="handoff high" onclick="openPanel(this,'hp-h05')">⚡ H-05 ▾</button>
       </div>
     </div>
-    <div class="h-panel" id="hp-h05">
+    <div class="panel hp" id="hp-h05">
       <h4>H-05 — Зміна Process Owner (КРИТИЧНИЙ)</h4>
       <p>Офіційна передача відповідальності за процес L2 від керівника команди впровадження до операційного директора локації. Фіксується в реєстрі процесів Групи компаній.</p>
-      <div class="note">⚠️ Ризик: без офіційної фіксації — відповідальність розмита, процес нікому не належить<br>📌 CBOK 4.0: Process Owner несе відповідальність за ефективність, відповідність і результати процесу L2</div>
-      <button class="detail-close" onclick="closeH('h05')">Закрити ✕</button>
+      <div class="note">⚠️ Ризик: без офіційної фіксації — відповідальність розмита, процес нікому не належить<br>📌 CBOK 4.0: <span class="gl" onclick="gt(this)">Process Owner<span class="gl-tip">Process Owner (Власник процесу) — людина, яка повністю відповідає за те, як працює певний робочий процес від початку і до самого кінця.</span></span> несе відповідальність за ефективність, відповідність і результати процесу L2</div>
+      <button class="close-btn" onclick="closePanel('hp-h05')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-training">
+    <div class="panel dp" id="dp-training">
       <h4>6.1 Навчання персоналу</h4>
       <p>Навчання хостес/оператора та техніка: робота з пультом, чек-листи «Ранок» та «Вечір», алгоритм форс-мажорів, протоколи дезінфекції.</p>
       <div class="note">📚 CBOK: передача знань — критичний крок операційної передачі<br>📋 Результат: атестований персонал + підписані регламенти</div>
-      <button class="detail-close" onclick="close_panel('dp-training',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-training')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-handover">
+    <div class="panel dp" id="dp-handover">
       <h4>6.2 Передача Process Owner (L1 → L2)</h4>
       <p>Офіційна передача: команда впровадження → операційний директор локації. Включає: регламент L2, матрицю ризиків, чек-листи, IP-реєстр, контакти підрядників, умови угоди зі спонсором.</p>
-      <div class="note">⚡ Hand-off H-05: Термінатор L1 / Тригер L2<br>📌 CBOK: зміна Process Owner фіксується в реєстрі процесів Групи компаній</div>
-      <button class="detail-close" onclick="close_panel('dp-handover',this)">Закрити ✕</button>
+      <div class="note">⚡ Hand-off H-05: <span class="gl" onclick="gt(this)">Термінатор<span class="gl-tip">Термінатор — кінцева точка, яка показує, що весь процес успішно або неуспішно завершився.</span></span> L1 / <span class="gl" onclick="gt(this)">Тригер<span class="gl-tip">Тригер — подія або дія, яка запускає початок усього робочого процесу на схемі.</span></span> L2<br>📌 CBOK: зміна Process Owner фіксується в реєстрі процесів Групи компаній</div>
+      <button class="close-btn" onclick="closePanel('dp-handover')">Закрити ✕</button>
     </div>
   </div>
 
 </div>
 
+<!-- ═══════════════════════════════ L2 ═══════════════════════════════ -->
 <div class="phase-label" style="margin-top:18px">L2 — Операційний процес: «Обслуговування гостя»</div>
 <div class="swimlane-wrap">
 
@@ -285,29 +290,29 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Технік об'єкта</div>
       <div class="lane-content">
-        <button class="step tech" onclick="toggle(this,'morning')">7.1 Чек-лист «Ранок»</button>
+        <button class="step tech" onclick="openPanel(this,'dp-morning')">7.1 Чек-ліст «Ранок»</button>
         <span class="arrow">→</span>
-        <button class="step tech" onclick="toggle(this,'testrun')">7.2 Тестовий запуск</button>
-        <button class="handoff med" onclick="toggleH('h06')">H-06 ▾</button>
+        <button class="step tech" onclick="openPanel(this,'dp-testrun')">7.2 Тестовий запуск</button>
+        <button class="handoff med" onclick="openPanel(this,'hp-h06')">H-06 ▾</button>
       </div>
     </div>
-    <div class="h-panel" id="hp-h06">
+    <div class="panel hp" id="hp-h06">
       <h4>H-06 — Технік → Хостес (готовність)</h4>
       <p>Технік передає хостес/оператору підтвердження щоденної готовності локації після виконання ранкового чек-листа та тестового запуску.</p>
       <div class="note">📋 Формат передачі: усне підтвердження або позначка в журналі готовності<br>🚫 Блокер: хостес НЕ розпочинає реєстрацію гостей без цього підтвердження</div>
-      <button class="detail-close" onclick="closeH('h06')">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('hp-h06')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-morning">
-      <h4>7.1 Ранковий чек-лист (щодня)</h4>
+    <div class="panel dp" id="dp-morning">
+      <h4>7.1 Ранковий чек-ліст (щодня)</h4>
       <p>Перевірка: VR-шолом та навушники, рівні ароматизаторів (ліс, деревина, трави, цитрус), вода в мікроспреях, вібраційна платформа, вентилятори, освітлення, ПЗ системи.</p>
-      <div class="note">📋 Правило: хостес НЕ починає реєстрацію без підтвердження від техніка<br>📊 KPI: Readiness Check = 100% щодня</div>
-      <button class="detail-close" onclick="close_panel('dp-morning',this)">Закрити ✕</button>
+      <div class="note">📋 Правило: хостес НЕ починає реєстрацію без підтвердження від техніка<br>📊 KPI: <span class="gl" onclick="gt(this)">Readiness Check<span class="gl-tip">Readiness Check (Перевірка готовності) — контрольний етап, на якому команда перевіряє, чи виконані всі необхідні умови для запуску проєкту або переходу на наступний крок.</span></span> = 100% щодня</div>
+      <button class="close-btn" onclick="closePanel('dp-morning')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-testrun">
+    <div class="panel dp" id="dp-testrun">
       <h4>7.2 Тестовий запуск</h4>
       <p>Повна тестова сесія без гостя: перевірка синхронізації VR-контенту з фізичними ефектами по всіх 4 стадіях.</p>
       <div class="note">🔄 Hand-off H-06: технік → хостес (статус «готово до роботи»)<br>⏱ Час: ~12 хвилин (повний цикл + буфер)</div>
-      <button class="detail-close" onclick="close_panel('dp-testrun',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-testrun')">Закрити ✕</button>
     </div>
   </div>
 
@@ -317,39 +322,39 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Гість</div>
       <div class="lane-content">
-        <button class="step client" onclick="toggle(this,'guest1')">8.1 Намір / бронь</button>
+        <button class="step client" onclick="openPanel(this,'dp-guest1')">8.1 Намір / бронь</button>
         <span class="arrow">→</span>
-        <button class="step client" onclick="toggle(this,'guest2')">8.2 Інструктаж</button>
+        <button class="step client" onclick="openPanel(this,'dp-guest2')">8.2 Інструктаж</button>
         <span class="arrow">→</span>
-        <button class="step client" onclick="toggle(this,'guest3')">8.3 VR-сесія</button>
+        <button class="step client" onclick="openPanel(this,'dp-guest3')">8.3 VR-сесія</button>
         <span class="arrow">→</span>
-        <button class="step client" onclick="toggle(this,'guest4')">8.4 Фідбек + UGC</button>
+        <button class="step client" onclick="openPanel(this,'dp-guest4')">8.4 Фідбек + UGC</button>
         <span class="kpi-badge">NPS</span>
       </div>
     </div>
-    <div class="detail-panel" id="dp-guest1">
+    <div class="panel dp" id="dp-guest1">
       <h4>8.1 Намір / бронювання гостя</h4>
       <p>Перша точка контакту гостя з інсталяцією. Підходить спонтанно або підтверджує бронювання (застосунок, сайт або стійка).</p>
-      <div class="note">📌 Тригер L2 (Outside-In): процес починається з першої взаємодії гостя<br>🎯 Мета: мінімізація часу очікування</div>
-      <button class="detail-close" onclick="close_panel('dp-guest1',this)">Закрити ✕</button>
+      <div class="note">📌 <span class="gl" onclick="gt(this)">Тригер<span class="gl-tip">Тригер — подія або дія, яка запускає початок усього робочого процесу на схемі.</span></span> L2 (<span class="gl" onclick="gt(this)">Outside-In<span class="gl-tip">Outside-In (Підхід «ззовні-всередину») — метод планування бізнесу, коли всі рішення приймаються на основі потреб клієнтів та ситуації на ринку, а не внутрішніх бажань компанії.</span></span>): процес починається з першої взаємодії гостя<br>🎯 Мета: мінімізація часу очікування</div>
+      <button class="close-btn" onclick="closePanel('dp-guest1')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-guest2">
+    <div class="panel dp" id="dp-guest2">
       <h4>8.2 Інструктаж та екіпірування</h4>
       <p>Гість отримує інструктаж безпеки, підтверджує ознайомлення з протипоказаннями (епілепсія, вагітність, клаустрофобія). Надягає VR-шолом та навушники.</p>
       <div class="note">⚖️ Правовий аспект: фіксований інструктаж = захист від претензій<br>⏱ Норматив: ≤2 хвилини</div>
-      <button class="detail-close" onclick="close_panel('dp-guest2',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-guest2')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-guest3">
+    <div class="panel dp" id="dp-guest3">
       <h4>8.3 VR-сесія: 4 стадії</h4>
       <p>Ст.1 — Поглинання: вібрація (серцебиття). Ст.2 — Занурення: аромат лісу + вітер. Ст.3 — Трансформація: туман + аудіо. Ст.4 — Переродження: аромат цитрусу + світловий ліс.</p>
       <div class="note">🎮 Всі фізичні ефекти синхронізовані автоматично<br>⏱ Тривалість: ~8–10 хвилин</div>
-      <button class="detail-close" onclick="close_panel('dp-guest3',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-guest3')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-guest4">
+    <div class="panel dp" id="dp-guest4">
       <h4>8.4 Фідбек та UGC-контент</h4>
-      <p>Гість оцінює досвід на планшеті (CSAT 1–5 або NPS), фотографується у брендованій зоні, публікує контент у соцмережах.</p>
-      <div class="note">📊 98% учасників experiential-заходів створюють digital-контент<br>💼 Цінність для Jägermeister: органічне охоплення = частина ROI спонсорства</div>
-      <button class="detail-close" onclick="close_panel('dp-guest4',this)">Закрити ✕</button>
+      <p>Гість оцінює досвід на планшеті (<span class="gl" onclick="gt(this)">CSAT<span class="gl-tip">CSAT (Customer Satisfaction Score / Індекс задоволеності клієнтів) — показник, який вимірює за п'ятибальною шкалою, наскільки клієнти задоволені конкретною послугою або взаємодією з компанією.</span></span> 1–5 або <span class="gl" onclick="gt(this)">NPS<span class="gl-tip">NPS (Net Promoter Score) — індекс, який показує рівень відданості та готовності клієнтів рекомендувати вашу компанію іншим.</span></span>), фотографується у брендованій зоні, публікує контент у соцмережах.</p>
+      <div class="note">📊 98% учасників <span class="gl" onclick="gt(this)">experiential-заходів<span class="gl-tip">Experiential-заходи (Емпіричні заходи) — події, які залучають клієнтів через живі враження, емоції та особистий досвід взаємодії з брендом.</span></span> створюють digital-контент<br>💼 Цінність для Jägermeister: органічне охоплення = частина <span class="gl" onclick="gt(this)">ROI<span class="gl-tip">ROI (Return on Investment / Окупність інвестицій) — показник, який демонструє, наскільки вигідним є проєкт або фінансова інвестиція.</span></span> спонсорства</div>
+      <button class="close-btn" onclick="closePanel('dp-guest4')">Закрити ✕</button>
     </div>
   </div>
 
@@ -357,52 +362,52 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Хостес / Оператор</div>
       <div class="lane-content">
-        <button class="step ops" onclick="toggle(this,'host1')">9.1 Реєстрація</button>
+        <button class="step ops" onclick="openPanel(this,'dp-host1')">9.1 Реєстрація</button>
         <span class="arrow">→</span>
-        <button class="step ops" onclick="toggle(this,'host2')">9.2 Інструктаж</button>
+        <button class="step ops" onclick="openPanel(this,'dp-host2')">9.2 Інструктаж</button>
         <span class="arrow">→</span>
-        <button class="step ops" onclick="toggle(this,'host3')">9.3 Запуск + моніторинг</button>
-        <button class="handoff high" onclick="toggleH('h07')">⚡ H-07 ▾</button>
+        <button class="step ops" onclick="openPanel(this,'dp-host3')">9.3 Запуск + моніторинг</button>
+        <button class="handoff high" onclick="openPanel(this,'hp-h07')">⚡ H-07 ▾</button>
         <span class="arrow">→</span>
-        <button class="step ops" onclick="toggle(this,'host4')">9.4 Фініш + дезінфекція</button>
-        <button class="handoff high" onclick="toggleH('h08')">⚡ H-08 ▾</button>
+        <button class="step ops" onclick="openPanel(this,'dp-host4')">9.4 Фініш + дезінфекція</button>
+        <button class="handoff high" onclick="openPanel(this,'hp-h08')">⚡ H-08 ▾</button>
       </div>
     </div>
-    <div class="h-panel" id="hp-h08">
+    <div class="panel hp" id="hp-h07">
+      <h4>H-07 — Людина → Автоматика (КРИТИЧНИЙ)</h4>
+      <p>Хостес натискає «Старт» на пульті — відповідальність за перебіг сесії переходить від людини до автоматизованої системи ПЗ ніші.</p>
+      <div class="note">⚠️ Ризик: збій ПЗ або зависання → система не подасть сигнал завершення → гість залишається в ізоляції<br>🔴 Протокол: хостес веде безперервний візуальний моніторинг через ізоляційне вікно протягом всієї сесії</div>
+      <button class="close-btn" onclick="closePanel('hp-h07')">Закрити ✕</button>
+    </div>
+    <div class="panel hp" id="hp-h08">
       <h4>H-08 — Санітарна передача (КРИТИЧНИЙ)</h4>
       <p>Після завершення сесії хостес проводить обов'язкову дезінфекцію VR-шолома та навушників перед тим, як простір буде переданий наступному гостю.</p>
       <div class="note">⚠️ Ризик: порушення санітарних норм = юридична відповідальність + репутаційний збиток бренду Vzorkovna та Jägermeister<br>⏱ Регламентний буфер: мінімум 5 хвилин між сесіями (дезінфекція + підготовка ніші)</div>
-      <button class="detail-close" onclick="closeH('h08')">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('hp-h08')">Закрити ✕</button>
     </div>
-    <div class="h-panel" id="hp-h07">
-      <h4>H-07 — Людина → Автоматика (КРИТИЧНИЙ)</h4>
-      <p>Хостес натискає «Старт» на пульті — відповідальність за перебіг сесії переходить від людини до автоматизованої системи ПЗ ніші.</p>
-      <div class="note">⚠️ Ризик: збій ПЗ або зависання → система не подасть сигнал завершення → гість залишається в ізоляції<br>🔴 Протокол: хостес веде безперервний візуальний моніторинг через ізоляційне вікно під час всієї сесії</div>
-      <button class="detail-close" onclick="closeH('h07')">Закрити ✕</button>
-    </div>
-    <div class="detail-panel" id="dp-host1">
+    <div class="panel dp" id="dp-host1">
       <h4>9.1 Реєстрація гостя</h4>
       <p>Хостес зустрічає гостя, перевіряє слот, фіксує запис у цифровому логу сесій.</p>
       <div class="note">📋 Передумова: отримано статус «готово» від техніка (H-06)<br>⏱ Буфер між сесіями: мін. 5 хвилин</div>
-      <button class="detail-close" onclick="close_panel('dp-host1',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-host1')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-host2">
+    <div class="panel dp" id="dp-host2">
       <h4>9.2 Інструктаж безпеки</h4>
       <p>Стандартизований інструктаж: протипоказання, поведінка в ніші, кнопка екстреної зупинки, дії при дискомфорті. Фіксує підтвердження гостя.</p>
       <div class="note">⚖️ Фіксований інструктаж + підтвердження = захист від претензій<br>📋 Скрипт: затверджений компонент регламенту</div>
-      <button class="detail-close" onclick="close_panel('dp-host2',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-host2')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-host3">
+    <div class="panel dp" id="dp-host3">
       <h4>9.3 Запуск сесії та моніторинг</h4>
       <p>Допомога з екіпіруванням → перевірка комфорту → натискання «Старт» → моніторинг стану гостя через ізоляційне вікно протягом усієї сесії.</p>
       <div class="note">⚡ Hand-off H-07 (КРИТИЧНИЙ): відповідальність людина → автоматика<br>⚠️ Ризик: збій ПЗ → гість у ізоляції → негайне ручне втручання</div>
-      <button class="detail-close" onclick="close_panel('dp-host3',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-host3')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-host4">
+    <div class="panel dp" id="dp-host4">
       <h4>9.4 Завершення сесії + дезінфекція</h4>
       <p>Після сигналу системи: знімання шолома → дезінфекція обладнання → прибирання ніші → фіксація у логу. Простір готовий до наступного гостя.</p>
       <div class="note">⚡ Hand-off H-08 (КРИТИЧНИЙ): санітарна передача між гостями<br>⚠️ Порушення = репутаційний та юридичний ризик</div>
-      <button class="detail-close" onclick="close_panel('dp-host4',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-host4')">Закрити ✕</button>
     </div>
   </div>
 
@@ -410,31 +415,31 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Система / ПЗ ніші</div>
       <div class="lane-content">
-        <button class="step system" onclick="toggle(this,'sys1')">10.1 Standby</button>
+        <button class="step system" onclick="openPanel(this,'dp-sys1')">10.1 Standby</button>
         <span class="arrow">→</span>
-        <button class="step system" onclick="toggle(this,'sys2')">10.2 Сесія (4 стадії)</button>
+        <button class="step system" onclick="openPanel(this,'dp-sys2')">10.2 Сесія (4 стадії)</button>
         <span class="arrow">→</span>
-        <button class="step system" onclick="toggle(this,'sys3')">10.3 Лог + звіт</button>
+        <button class="step system" onclick="openPanel(this,'dp-sys3')">10.3 Лог + звіт</button>
         <span class="kpi-badge">KPI</span>
       </div>
     </div>
-    <div class="detail-panel" id="dp-sys1">
+    <div class="panel dp" id="dp-sys1">
       <h4>10.1 Standby-режим системи</h4>
       <p>Система очікує команди запуску. Всі сенсорні модулі в режимі готовності.</p>
       <div class="note">⚙️ Власник системи: Vzorkovna (не Jägermeister) — фіксується в угоді<br>📋 Документ: технічна специфікація + права на ПЗ</div>
-      <button class="detail-close" onclick="close_panel('dp-sys1',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-sys1')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-sys2">
+    <div class="panel dp" id="dp-sys2">
       <h4>10.2 Автоматична сесія (4 стадії)</h4>
       <p>Синхронізована подача ефектів: Ст.1: вібрація 4–12 Гц | Ст.2: аромат лісу + вентилятори 30% | Ст.3: туман + аудіо | Ст.4: аромат цитрусу + вентилятори 70%.</p>
       <div class="note">🔄 По завершенні: сигнал хостес (зворотний H-07)<br>📊 Лог: час, параметри, аномалії кожної сесії</div>
-      <button class="detail-close" onclick="close_panel('dp-sys2',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-sys2')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-sys3">
+    <div class="panel dp" id="dp-sys3">
       <h4>10.3 Автоматичний лог сесії</h4>
       <p>Запис тривалості, стадій, відхилень, технічних параметрів. Зведений звіт щоденно для операційного директора та Jägermeister.</p>
-      <div class="note">📊 KPI-джерело: Cycle Time, Utilization Rate, Failure Rate<br>💼 Для Jägermeister: кількість сесій = підтвердження ROI</div>
-      <button class="detail-close" onclick="close_panel('dp-sys3',this)">Закрити ✕</button>
+      <div class="note">📊 KPI-джерело: <span class="gl" onclick="gt(this)">Cycle Time<span class="gl-tip">Cycle Time (Час циклу) — загальний час, який витрачається на виконання одного конкретного завдання або процесу від його фактичного початку до повного завершення.</span></span>, <span class="gl" onclick="gt(this)">Utilization Rate<span class="gl-tip">Utilization Rate (Коефіцієнт завантаження) — показник, який відображає відсоток робочого часу, який працівник або обладнання витрачають на виконання безпосередніх корисних завдань проєкту.</span></span>, <span class="gl" onclick="gt(this)">Failure Rate<span class="gl-tip">Failure Rate (Частота відмов / Показник збоїв) — показник, який відображає, як часто певна система, обладнання чи процес дають збій або працюють некоректно за визначений проміжок часу.</span></span><br>💼 Для Jägermeister: кількість сесій = підтвердження <span class="gl" onclick="gt(this)">ROI<span class="gl-tip">ROI (Return on Investment / Окупність інвестицій) — показник, який демонструє, наскільки вигідним є проєкт або фінансова інвестиція.</span></span></div>
+      <button class="close-btn" onclick="closePanel('dp-sys3')">Закрити ✕</button>
     </div>
   </div>
 
@@ -442,84 +447,69 @@ button.handoff.active-h{box-shadow:0 0 0 2px #A32D2D}
     <div class="lane-row">
       <div class="lane-label">Технік об'єкта</div>
       <div class="lane-content">
-        <button class="step tech" onclick="toggle(this,'tech_inc')">11.1 Incident management</button>
+        <button class="step tech" onclick="openPanel(this,'dp-tech_inc')">11.1 <span class="gl" onclick="gt(this);event.stopPropagation()">Incident management<span class="gl-tip">Incident management (Управління інцидентами) — чіткий порядок дій команди для швидкого відновлення нормальної роботи після раптового збою, помилки чи технічної проблеми.</span></span></button>
         <span class="arrow">→</span>
-        <button class="step tech" onclick="toggle(this,'tech_eod')">11.2 Чек-лист «Вечір»</button>
+        <button class="step tech" onclick="openPanel(this,'dp-tech_eod')">11.2 Чек-ліст «Вечір»</button>
         <span class="kpi-badge">KPI</span>
       </div>
     </div>
-    <div class="detail-panel" id="dp-tech_inc">
+    <div class="panel dp" id="dp-tech_inc">
       <h4>11.1 Incident management</h4>
       <p>Алгоритм: Збій ПЗ → перезавантаження → підрядник. Закінчення рідин → дозаправка між сесіями. Поганий стан гостя → стоп → шолом знято → вода → медична допомога.</p>
       <div class="note">📋 Матриця ризиків: кожен ризик має задокументовану дію (CBOK)<br>⏱ Ціль: відновлення роботи ≤15 хвилин</div>
-      <button class="detail-close" onclick="close_panel('dp-tech_inc',this)">Закрити ✕</button>
+      <button class="close-btn" onclick="closePanel('dp-tech_inc')">Закрити ✕</button>
     </div>
-    <div class="detail-panel" id="dp-tech_eod">
-      <h4>11.2 Вечірній чек-лист</h4>
+    <div class="panel dp" id="dp-tech_eod">
+      <h4>11.2 Вечірній чек-ліст</h4>
       <p>Перевірка залишків витратних матеріалів, стан обладнання, заповнення денного технічного звіту, планування на наступний день. Система в нічний standby.</p>
-      <div class="note">📊 KPI: Failure Rate — перервані сесії / загальна кількість (ціль: 0)<br>📋 Результат: звіт + готовність до наступного дня</div>
-      <button class="detail-close" onclick="close_panel('dp-tech_eod',this)">Закрити ✕</button>
+      <div class="note">📊 KPI: <span class="gl" onclick="gt(this)">Failure Rate<span class="gl-tip">Failure Rate (Частота відмов / Показник збоїв) — показник, який відображає, як часто певна система, обладнання чи процес дають збій або працюють некоректно за визначений проміжок часу.</span></span> — перервані сесії / загальна кількість (ціль: 0)<br>📋 Результат: звіт + готовність до наступного дня</div>
+      <button class="close-btn" onclick="closePanel('dp-tech_eod')">Закрити ✕</button>
     </div>
   </div>
 
 </div>
 
 <div class="footer-note">
-  ⚡ Критичні Hand-offs: H-01 (пітч спонсору) · H-02 (фінансування+гайдлайни) · H-03 (L1→L2) · H-05 (зміна Process Owner) · H-07 (людина→автоматика) · H-08 (санітарна передача)<br>
-  Стандарт: CBOK 4.0 (ABPMP International) · Методологія: Outside-In, SIPOC, Hand-off Analysis, IGOE
+  ⚡ Критичні <span class="gl" onclick="gt(this)">Hand-offs<span class="gl-tip">Hand-off (Передача в роботу) — момент у процесі, коли один фахівець або відділ завершує свою частину роботи і офіційно передає завдання наступному виконавцю.</span></span>: H-01 (пітч спонсору) · H-02 (фінансування+гайдлайни) · H-03 (L1→L2) · H-05 (зміна Process Owner) · H-07 (людина→автоматика) · H-08 (санітарна передача)<br>
+  Стандарт: CBOK 4.0 (ABPMP International) · Методологія: <span class="gl" onclick="gt(this)">Outside-In<span class="gl-tip">Outside-In (Підхід «ззовні-всередину») — метод планування бізнесу, коли всі рішення приймаються на основі потреб клієнтів та ситуації на ринку, а не внутрішніх бажань компанії.</span></span>, <span class="gl" onclick="gt(this)">SIPOC<span class="gl-tip">SIPOC — інструмент для швидкого огляду бізнес-процесу: Постачальник (Supplier), Вхід (Input), Процес (Process), Вихід (Output), Клієнт (Customer).</span></span>, <span class="gl" onclick="gt(this)">Hand-off Analysis<span class="gl-tip">Hand-off Analysis (Аналіз передачі роботи) — дослідження моментів, коли завдання переходять від одного відділу до іншого, з метою виявлення затримок або помилок.</span></span>, <span class="gl" onclick="gt(this)">IGOE<span class="gl-tip">IGOE — інструмент моделювання процесу за чотирма складовими: Вхід (Input), Орієнтир (Guide), Вихід (Output), Інструмент/Виконавець (Enabler).</span></span> · Vzorkovna © 2025
 </div>
 
 </div>
 <script>
-function toggle(btn, id) {
-  var panel = document.getElementById('dp-' + id);
-  var isOpen = panel.classList.contains('open');
-  // close all panels
-  var all = document.querySelectorAll('.detail-panel');
-  for (var i = 0; i < all.length; i++) { all[i].classList.remove('open'); }
-  var allBtns = document.querySelectorAll('.step');
-  for (var i = 0; i < allBtns.length; i++) { allBtns[i].classList.remove('active'); }
-  // open this one if it was closed
+// Single source of truth: close everything, then open target
+function openPanel(trigger, id) {
+  var target = document.getElementById(id);
+  var isOpen = target.classList.contains('open');
+
+  // close all panels + clear all active states
+  document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('open'); });
+  document.querySelectorAll('.step, .handoff').forEach(function(b){ b.classList.remove('on'); });
+
   if (!isOpen) {
-    panel.classList.add('open');
-    btn.classList.add('active');
-    setTimeout(function() {
-      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 50);
+    target.classList.add('open');
+    if (trigger) trigger.classList.add('on');
+    setTimeout(function(){ target.scrollIntoView({behavior:'smooth', block:'nearest'}); }, 50);
   }
-}
-function close_panel(id, btn) {
-  document.getElementById(id).classList.remove('open');
-  var allBtns = document.querySelectorAll('.step');
-  for (var i = 0; i < allBtns.length; i++) { allBtns[i].classList.remove('active'); }
 }
 
-function toggleH(id) {
-  var panel = document.getElementById('hp-' + id);
-  var isOpen = panel.classList.contains('open');
-  var allH = document.querySelectorAll('.h-panel');
-  for (var i = 0; i < allH.length; i++) { allH[i].classList.remove('open'); }
-  var allHBtns = document.querySelectorAll('button.handoff');
-  for (var i = 0; i < allHBtns.length; i++) { allHBtns[i].classList.remove('active-h'); }
-  if (!isOpen) {
-    panel.classList.add('open');
-    // find and highlight the button
-    var btns = document.querySelectorAll('button.handoff');
-    for (var i = 0; i < btns.length; i++) {
-      if (btns[i].getAttribute('onclick') && btns[i].getAttribute('onclick').indexOf("'" + id + "'") !== -1) {
-        btns[i].classList.add('active-h');
-      }
-    }
-    setTimeout(function() {
-      panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }, 50);
+function closePanel(id) {
+  document.getElementById(id).classList.remove('open');
+  document.querySelectorAll('.step, .handoff').forEach(function(b){ b.classList.remove('on'); });
+}
+
+// Glossary tooltip: tap to toggle on mobile, works alongside click
+function gt(el) {
+  var isOpen = el.classList.contains('tip-open');
+  document.querySelectorAll('.gl.tip-open').forEach(function(g){ g.classList.remove('tip-open'); });
+  if (!isOpen) el.classList.add('tip-open');
+}
+
+// Close glossary on outside tap
+document.addEventListener('click', function(e){
+  if (!e.target.closest('.gl')) {
+    document.querySelectorAll('.gl.tip-open').forEach(function(g){ g.classList.remove('tip-open'); });
   }
-}
-function closeH(id) {
-  document.getElementById('hp-' + id).classList.remove('open');
-  var allHBtns = document.querySelectorAll('button.handoff');
-  for (var i = 0; i < allHBtns.length; i++) { allHBtns[i].classList.remove('active-h'); }
-}
+});
 </script>
 </body>
 </html>
