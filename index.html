@@ -55,8 +55,8 @@ button{font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:rgba(0,0,0
 /* glossary terms */
 .gl{border-bottom:1px dashed #888;cursor:pointer;position:relative;display:inline}
 /* glossary tooltip — inline block below term, iOS-safe */
-.gl-tip{display:none;position:absolute;left:0;top:calc(100% + 6px);z-index:200;background:#1a1a18;color:#f8f7f4;font-size:11px;line-height:1.6;padding:10px 12px;border-radius:8px;width:260px;max-width:calc(100vw - 28px);white-space:normal;word-break:break-word;font-weight:400;box-shadow:0 4px 20px rgba(0,0,0,.3);pointer-events:none}
-.gl-tip::before{content:'';position:absolute;top:-5px;left:12px;border:5px solid transparent;border-bottom-color:#1a1a18;border-top:none}
+.gl-tip{display:none;position:fixed;z-index:200;background:#1a1a18;color:#f8f7f4;font-size:11px;line-height:1.6;padding:10px 12px;border-radius:8px;width:260px;max-width:calc(100vw - 28px);white-space:normal;word-break:break-word;font-weight:400;box-shadow:0 4px 20px rgba(0,0,0,.3);pointer-events:none}
+
 .gl.tip-open .gl-tip{display:block}
 .footer-note{font-size:11px;color:#73726c;margin-top:10px;line-height:1.7;padding:10px 14px;background:#fff;border:1px solid #e8e6e0;border-radius:8px}
 </style>
@@ -499,15 +499,57 @@ function closePanel(id) {
 
 // Glossary tooltip: tap to toggle on mobile, works alongside click
 function gt(el) {
+  var tip = el.querySelector('.gl-tip');
+  if (!tip) return;
   var isOpen = el.classList.contains('tip-open');
-  document.querySelectorAll('.gl.tip-open').forEach(function(g){ g.classList.remove('tip-open'); });
-  if (!isOpen) el.classList.add('tip-open');
+
+  // close all
+  document.querySelectorAll('.gl.tip-open').forEach(function(g){
+    g.classList.remove('tip-open');
+    var t = g.querySelector('.gl-tip');
+    if (t) t.style.cssText = '';
+  });
+
+  if (!isOpen) {
+    el.classList.add('tip-open');
+    tip.style.display = 'block';
+
+    var TIP_W = Math.min(260, window.innerWidth - 28);
+    var rect = el.getBoundingClientRect();
+    var spaceBelow = window.innerHeight - rect.bottom;
+    var spaceAbove = rect.top;
+    var PAD = 14;
+
+    // horizontal: center on word, clamp to viewport
+    var idealLeft = rect.left + rect.width / 2 - TIP_W / 2;
+    var left = Math.max(PAD, Math.min(idealLeft, window.innerWidth - TIP_W - PAD));
+
+    // vertical: prefer below, flip above if not enough room
+    var top;
+    tip.style.width = TIP_W + 'px';
+    tip.style.left = left + 'px';
+    tip.style.top = '0px'; // temp render to measure height
+    var tipH = tip.offsetHeight;
+
+    if (spaceBelow >= tipH + 8) {
+      top = rect.bottom + 6;
+    } else if (spaceAbove >= tipH + 8) {
+      top = rect.top - tipH - 6;
+    } else {
+      top = Math.max(PAD, rect.bottom + 6);
+    }
+    tip.style.top = top + 'px';
+  }
 }
 
 // Close glossary on outside tap
 document.addEventListener('click', function(e){
   if (!e.target.closest('.gl')) {
-    document.querySelectorAll('.gl.tip-open').forEach(function(g){ g.classList.remove('tip-open'); });
+    document.querySelectorAll('.gl.tip-open').forEach(function(g){
+      g.classList.remove('tip-open');
+      var t = g.querySelector('.gl-tip');
+      if (t) t.style.cssText = '';
+    });
   }
 });
 </script>
